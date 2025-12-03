@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100">
+
+<!-- MAIN WRAPPER -->
+<div class="max-w-6xl mx-auto p-6">
+
+  <!-- PRODUCT CARD -->
+  <div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col lg:flex-row gap-10">
+
+    <!-- IMAGE -->
+    <div class="flex-1">
+      <img id="productImg" src="" class="w-full rounded-2xl shadow-sm object-cover">
+    </div>
+
+    <!-- PRODUCT INFO -->
+    <div class="flex-1 flex flex-col gap-4">
+
+      <h1 id="productName" class="text-4xl font-bold text-gray-900"></h1>
+
+      <div class="flex items-center gap-2">
+        <span id="productRating" class="text-yellow-400 text-xl"></span>
+      </div>
+
+      <p id="productDesc" class="text-gray-600 text-lg"></p>
+
+      <div class="flex items-center gap-4">
+        <p id="productPrice" class="text-3xl font-bold text-pink-600"></p>
+        <p id="productOldPrice" class="text-gray-400 line-through text-xl"></p>
+      </div>
+
+      <!-- QUANTITY -->
+      <div class="flex items-center gap-4 mt-4">
+        <span class="font-medium">Quantity:</span>
+        <button id="minusQty" class="w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-xl flex items-center justify-center">-</button>
+        <input id="quantity" type="number" value="1" min="1" class="w-16 h-10 text-center border border-gray-300 rounded-lg">
+        <button id="plusQty" class="w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-xl flex items-center justify-center">+</button>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="flex gap-4 mt-6">
+        <button id="addToCart" class="flex-1 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl flex items-center justify-center gap-3">
+          <i class="fa-solid fa-cart-plus text-xl"></i> Add to Cart
+        </button>
+
+        <button id="buyNow" class="flex-1 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl">
+          Buy Now
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIMILAR PRODUCTS -->
+  <h2 class="text-2xl font-bold mt-12 mb-4 text-gray-900">Similar Products</h2>
+  <div id="similarProducts" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
+
+</div>
+
+
+
+
+
+<!-- BUY MODAL -->
+<div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+  <div class="bg-white p-6 rounded-xl max-w-md w-full shadow-lg">
+
+    <h2 class="text-2xl font-bold mb-4">Buy Product</h2>
+
+    <p class="text-gray-600 mb-2">Product: <span id="modalProductName" class="font-semibold"></span></p>
+    <p class="text-gray-600 mb-2">Price: <span id="modalProductPrice" class="font-semibold"></span></p>
+    <p class="text-gray-600 mb-2">Quantity: <span id="modalProductQty" class="font-semibold"></span></p>
+
+    <p class="text-gray-900 text-lg font-bold mt-4">
+      Total: <span id="modalTotal"></span>
+    </p>
+
+    <div class="flex gap-4 mt-6">
+      <button id="closeBuyModal" class="flex-1 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Cancel</button>
+      <button id="confirmBuy" class="flex-1 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+        Continue
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- ARE YOU SURE MODAL -->
+<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+  <div class="bg-white p-6 rounded-xl max-w-sm w-full shadow-lg">
+
+    <h2 class="text-xl font-bold mb-4">Are you sure?</h2>
+    <p class="text-gray-600">Do you want to complete the purchase?</p>
+
+    <div class="flex gap-4 mt-6">
+      <button id="cancelConfirm" class="flex-1 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">No</button>
+      <button id="finalBuy" class="flex-1 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Yes</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+  /* PRODUCT DATA */
+  const products = [
+    { id: "1", name: "Jacket", price: 48, oldPrice: 75, description: "Mens Winter Leather Jackets", img: "/src/images/newproducts/jacket-1.jpg", rating: 3 },
+    { id: "2", name: "Coat", price: 60, oldPrice: 90, description: "Stylish Winter Coat", img: "/src/images/newproducts/jacket-1.jpg", rating: 4 },
+    { id: "3", name: "Shirt", price: 120, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
+    { id: "4", name: "Jeans", price: 70, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
+    { id: "5", name: "T-shirt", price: 30, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
+    { id: "6", name: "Shirt", price: 100, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
+    { id: "7", name: "Shirt", price: 100, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 }
+  ];
+
+  function getStars(rating) {
+    let s = "";
+    for (let i = 0; i < 5; i++) {
+      s += i < rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+    }
+    return s;
+  }
+
+  const id = new URLSearchParams(window.location.search).get("id");
+  const product = products.find(p => p.id === id);
+
+  if (!product) {
+    document.body.innerHTML = "Product not found";
+  } else {
+    document.getElementById("productName").innerText = product.name;
+    document.getElementById("productDesc").innerText = product.description;
+    document.getElementById("productPrice").innerText = "$" + product.price;
+    document.getElementById("productOldPrice").innerText = "$" + product.oldPrice;
+    document.getElementById("productImg").src = product.img;
+    document.getElementById("productRating").innerHTML = getStars(product.rating);
+
+    const similar = products.filter(p => p.id !== product.id).slice(0, 4);
+    document.getElementById("similarProducts").innerHTML =
+      similar.map(p => `
+        <a href="product.html?id=${p.id}" class="bg-white p-3 rounded-xl shadow hover:shadow-md transition block">
+          <img src="${p.img}" class="w-full h-40 object-cover rounded-xl">
+          <h3 class="font-semibold mt-2">${p.name}</h3>
+          <p class="text-pink-500 font-bold">$${p.price}</p>
+        </a>
+      `).join("");
+  }
+
+  const qtyInput = document.getElementById("quantity");
+
+  document.getElementById("minusQty").onclick = () => {
+    if (qtyInput.value > 1) qtyInput.value--;
+  };
+  document.getElementById("plusQty").onclick = () => qtyInput.value++;
+
+  /* ADD TO CART */
+  document.getElementById("addToCart").onclick = () => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let existing = cart.find(i => i.id === product.id);
+
+    if (existing) existing.quantity += parseInt(qtyInput.value);
+    else cart.push({ ...product, quantity: parseInt(qtyInput.value) });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+  };
+
+
+
+  /* BUY NOW BUTTON → OPENS BUY MODAL */
+  document.getElementById("buyNow").onclick = () => {
+    document.getElementById("modalProductName").innerText = product.name;
+    document.getElementById("modalProductPrice").innerText = "$" + product.price;
+    document.getElementById("modalProductQty").innerText = qtyInput.value;
+    document.getElementById("modalTotal").innerText = "$" + (product.price * qtyInput.value);
+
+    document.getElementById("buyModal").classList.remove("hidden");
+    document.getElementById("buyModal").classList.add("flex");
+  };
+
+  document.getElementById("closeBuyModal").onclick = () => {
+    document.getElementById("buyModal").classList.add("hidden");
+  };
+
+
+
+  /* CONTINUE → OPEN CONFIRM MODAL */
+  document.getElementById("confirmBuy").onclick = () => {
+    document.getElementById("buyModal").classList.add("hidden");
+
+    document.getElementById("confirmModal").classList.remove("hidden");
+    document.getElementById("confirmModal").classList.add("flex");
+  };
+
+  /* CANCEL CONFIRM */
+  document.getElementById("cancelConfirm").onclick = () => {
+    document.getElementById("confirmModal").classList.add("hidden");
+  };
+
+  /* FINAL BUY */
+  document.getElementById("finalBuy").onclick = () => {
+    document.getElementById("confirmModal").classList.add("hidden");
+    alert("Purchase completed successfully!");
+  };
+</script>
+
+</body>
+</html>

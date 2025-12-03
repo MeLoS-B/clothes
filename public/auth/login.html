@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex justify-center items-center my-[50px] h-full bg-white">
+  <div class="grid w-[80%] max-[1000px]:w-[90%] max-[1000px]:grid-cols-1 grid-cols-2 rounded-[10px] bg-white text-black" style="box-shadow: 0px 0px 40px rgb(29 58 83 / 10%)">
+
+
+    <div class="flex justify-center items-center p-[50px] border-r border-[#f1f1f2] max-[1000px]:hidden">
+      <div class="w-full h-[70%]">
+        <img src="/src/images/auth/svg-login.svg" alt="Login illustration" class="w-full h-full" />
+      </div>
+    </div>
+
+   
+    <div class="p-[50px] flex flex-col justify-center max-[576px]:p-[20px]">
+      
+      
+
+
+      <h2 class="text-[2.2rem] mb-[0px] font-bold">Mirë se vini përsëri!</h2>
+      <p class="text-[#747579] font-semibold mb-[30px]">
+        I ri këtu?
+        <a href="signin.html" class="text-primary-dark hover:text-primary-light transition-all">&nbsp;Krijo një Llogari</a>
+      </p>
+
+ 
+      <form class="form">
+        <div class="mb-4">
+          <label for="email" class="block font-medium">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-2 border rounded-md bg-white" />
+          <div class="text-red-500 text-sm"> </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block font-medium">Fjalëkalimi</label>
+          <input type="password" id="password" name="password" class="w-full p-2 border rounded-md bg-white" />
+          <div class="text-red-500 text-sm">  </div>
+        </div>
+
+        <button type="button" id="logInBtn" class="mb-[20px] w-full p-[15px] font-[700] border-none rounded-[8px] bg-primary text-white cursor-pointer bg-pink-400 transition-all">
+          Kyçu
+        </button>
+      </form>
+
+
+      <p class="text-center text-[#747579] mt-[20px]">
+        &copy; 2025 <span class="text-primary font-semibold">Dollapi.</span> Të gjitha të drejtat janë të rezervuara.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/src/js/login.js"></script>
+
+</body>
+</html>

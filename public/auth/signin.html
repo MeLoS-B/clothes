@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex justify-center items-center my-[50px] h-full bg-white">
+  <div class="grid w-[80%] max-[1000px]:w-[90%] max-[1000px]:grid-cols-1 grid-cols-2 rounded-[10px] bg-white text-black" style="box-shadow: 0px 0px 40px rgb(29 58 83 / 10%)">
+    
+
+    <div class="p-[50px] flex flex-col justify-center max-[576px]:p-[20px]">
+      
+      <h2 class="text-[2.2rem] mb-[0px] font-bold">Regjistrohu</h2>
+      <p class="text-[#747579] font-semibold mb-[30px]">
+        Tashmë një anëtar?
+        <a href="/login" class="text-primary-dark hover:text-primary-light transition-all">&nbsp; Kyçuni</a>
+      </p>
+
+      <form>
+        <div class="grid grid-cols-2 gap-5 max-[1000px]:grid-cols-1 max-[1000px]:gap-0">
+          <div class="mb-4">
+            <label for="name" class="block font-medium">Emri</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border rounded-md bg-white" />
+            <p class="text-red-500 text-sm"></p>
+          </div>
+
+          <div class="mb-4">
+            <label for="surname" class="block font-medium">Mbiemri</label>
+            <input type="text" id="surname" name="surname" class="w-full p-2 border rounded-md bg-white" />
+            <p class="text-red-500 text-sm"></p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-5 max-[1000px]:grid-cols-1 max-[1000px]:gap-0">
+          <div class="mb-4">
+            <label for="phone" class="block font-medium">Nr.Telefonit</label>
+            <input type="tel" id="phone" name="phone" class="w-full p-2 border rounded-md bg-white" />
+            <p id="phoneError" class="text-red-500 text-sm"></p>
+          </div>
+
+          <div class="mb-4">
+            <label for="address" class="block font-medium">Adresa</label>
+            <input type="text" id="address" name="address" class="w-full p-2 border rounded-md bg-white" />
+            <p class="text-red-500 text-sm"></p>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block font-medium">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-2 border rounded-md bg-white" />
+          <p id="emailError" class="text-red-500 text-sm"></p>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block font-medium">Fjalëkalimi</label>
+          <input type="password" id="password" name="password" class="w-full p-2 border rounded-md bg-white" />
+          <p id="passwordError" class="text-red-500 text-sm"></p>
+        </div>
+
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" id="acceptTerms" name="acceptTerms" class="mr-2 cursor-pointer" />
+          <label for="acceptTerms" class="text-[#747579]">
+            Pajtohem me
+            <a href="/terms-and-conditions" class="text-primary hover:underline"> Termat dhe Kushtet</a>
+          </label>
+        </div>
+        <p class="text-red-500 text-sm mb-4"></p>
+
+        <button type="button" id="submitSignIn" class="mb-[20px] font-[700] bg-pink-400 w-full p-[15px] border-none rounded-[8px] bg-primary text-white cursor-pointer hover:bg-primary-dark transition-all">
+          Regjistrohu
+        </button>
+      </form>
+
+      <p class="text-center text-[#747579] mt-[20px]">
+        &copy; 2025 <span class="text-primary font-semibold">Dollapi.</span> Të gjitha të drejtat janë të rezervuara.
+      </p>
+    </div>
+
+
+    <div class="flex justify-center items-center p-[50px] border-r border-[#f1f1f2] max-[1000px]:hidden">
+      <div class="w-full h-[80%]">
+        <img src="/src/images/auth/svg-login.svg" alt="Login illustration" class="w-full h-full" />
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script type="module" src="/src/js/signin.js"></script>
+
+    
+</body>
+</html>

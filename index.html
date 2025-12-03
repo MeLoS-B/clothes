@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Top Header Bar -->
+    <div class="border-b border-gray-200 py-3 bg-gray-50 hidden lg:block">
+      <div class="flex w-[90%] mx-auto justify-between items-center text-sm">
+        <div class="flex gap-2 text-gray-600">
+          <i
+            class="fa-brands fa-facebook bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-twitter bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-instagram bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-linkedin bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+        </div>
+        <p class="font-semibold text-gray-600">
+          Free Shipping This Week Order Over - $55
+        </p>
+        <div class="flex items-center gap-2">
+          <select class="border rounded px-1 py-[2px]">
+            <option>USD</option>
+            <option>EUR</option>
+          </select>
+          <select class="border rounded px-1 py-[2px]">
+            <option>English</option>
+            <option>Shqip</option>
+            <option>Spanish</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-b border-gray-200 py-6">
+      <div class="flex justify-between items-center w-[90%] mx-auto">
+        <div>
+          <h1 class="text-[30px] font-bold">Anon</h1>
+        </div>
+        <div class="flex-1 mx-10">
+          <input
+            class="w-full p-2 border-[1px] border-gray-300 rounded-[10px]"
+            type="text"
+            placeholder="Enter your product name..."
+          />
+        </div>
+        <p class="text-black hidden lg:block" id="userName"></p>
+        <div id="profileIcons" class="space-x-4 text-xl hidden lg:block">
+          <a class="" id="profileUser" href="/public/auth/login.html">
+            <i class="fa-solid fa-user cursor-pointer"></i>
+          </a>
+          <i class="fa-solid fa-heart cursor-pointer"></i>
+
+          <a href="/src/pages/cart.html">
+            <i class="fa-solid fa-cart-shopping cursor-pointer"></i>
+          </a>
+          <i id="logOutBtn" class="fa-solid fa-right-from-bracket hidden"></i>
+        </div>
+      </div>
+    </div>
+
+    <nav class="w-full bg-white z-50 p-10 lg:p-0">
+      <div
+        class="flex justify-center space-x-8 py-4 text-[18px] font-semibold relative hidden lg:flex"
+      >
+        <a href="#" class="hover:text-pink-500 transition">Home</a>
+
+        <div class="relative group">
+          <a href="#" class="hover:text-pink-500 transition">Categories</a>
+          <div
+            class="absolute hidden group-hover:flex gap-20 p-5 top-[25px] left-1/2 -translate-x-1/2 bg-white shadow-lg z-50"
+          >
+            <div>
+              <h1 class="font-bold mb-2">Electronics</h1>
+              <a href="#" class="block text-sm text-gray-600 hover:text-black"
+                >Phones</a
+              >
+              <a href="#" class="block text-sm text-gray-600 hover:text-black"
+                >Laptops</a
+              >
+            </div>
+            <div>
+              <h1 class="font-bold mb-2">Clothing</h1>
+              <a href="#" class="block text-sm text-gray-600 hover:text-black"
+                >Shirts</a
+              >
+              <a href="#" class="block text-sm text-gray-600 hover:text-black"
+                >Jeans</a
+              >
+            </div>
+            <div>
+              <h1 class="font-bold mb-2">Accessories</h1>
+              <a href="#" class="block text-sm text-gray-600 hover:text-black"
+                >Bags</a
+              >
+              <a href="#" class="block text-sm text-gray-600 hover:text-black"
+                >Belts</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <a href="#" class="hover:text-pink-500 transition">Men's</a>
+          <div
+            class="absolute hidden group-hover:flex flex-col p-5 top-[25px] left-0 bg-white shadow-lg z-50 w-48"
+          >
+            <h1 class="font-bold mb-2">Clothing</h1>
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >Shirts</a
+            >
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >Jackets</a
+            >
+          </div>
+        </div>
+
+        <div class="relative group">
+          <a href="#" class="hover:text-pink-500 transition">Women's</a>
+          <div
+            class="absolute hidden group-hover:flex flex-col p-5 top-[25px] left-0 bg-white shadow-lg z-50 w-48"
+          >
+            <h1 class="font-bold mb-2">Clothing</h1>
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >Dresses</a
+            >
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >Tops</a
+            >
+          </div>
+        </div>
+
+        <div class="relative group">
+          <a href="#" class="hover:text-pink-500 transition">Jewelry</a>
+          <div
+            class="absolute hidden group-hover:flex flex-col p-5 top-[25px] left-0 bg-white shadow-lg z-50 w-48"
+          >
+            <h1 class="font-bold mb-2">Collection</h1>
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >Necklaces</a
+            >
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >Rings</a
+            >
+          </div>
+        </div>
+
+        <div class="relative group">
+          <a href="#" class="hover:text-pink-500 transition">Perfume</a>
+          <div
+            class="absolute hidden group-hover:flex flex-col p-5 top-[25px] left-0 bg-white shadow-lg z-50 w-48"
+          >
+            <h1 class="font-bold mb-2">Fragrances</h1>
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >For Him</a
+            >
+            <a href="#" class="block text-sm text-gray-600 hover:text-black"
+              >For Her</a
+            >
+          </div>
+        </div>
+
+        <a href="#" class="hover:text-pink-500 transition">Blog</a>
+        <a href="#" class="hover:text-pink-500 transition">Hot Offers</a>
+      </div>
+      <div
+        class="w-[85%] mx-auto h-[300px] sm:h-[400px] md:h-[470px] rounded-[20px] overflow-hidden relative flex items-center"
+      >
+        <img
+          class="absolute inset-0 w-full h-full object-cover"
+          src="/src/images/banner-1.jpg"
+          alt=""
+        />
+        <div
+          class="relative z-10 bg-white/70 p-4 sm:p-8 rounded-[12px] max-w-[90%] sm:max-w-[350px] ml-4 sm:ml-20"
+        >
+          <h1 class="text-pink-400 text-[16px] sm:text-[19px] font-semibold">
+            Trending Item
+          </h1>
+          <h1
+            class="text-[24px] sm:text-[32px] md:text-[40px] font-bold leading-tight"
+          >
+            Women's latest fashion sale
+          </h1>
+          <p
+            class="mt-2 text-[16px] sm:text-[20px] md:text-[23px] font-semibold text-gray-500"
+          >
+            starting at $ 20.00
+          </p>
+          <button
+            class="bg-pink-400 text-white rounded-[5px] px-4 py-2 font-semibold mt-4 sm:mt-6 hover:bg-black transition duration-500 ease-in-out w-full sm:w-auto"
+          >
+            Shop Now
+          </button>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-[85%] mx-auto mt-[130px] gap-7"
+      >
+        <div
+          class="border-[1px] border-gray-200 p-3 rounded-[6px] flex flex-row gap-3 font-semibold"
+        >
+          <div
+            class="bg-gray-200 border-[1px] border-gray-300 rounded-[4px] w-[50px] p-2"
+          >
+            <img
+              class="w-full"
+              src="/src/images/banner photos/coat.svg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-row justify-between w-full">
+            <div>
+              <p>Winter wear</p>
+              <a class="text-[13px] text-pink-500" href="#">Show All</a>
+            </div>
+            <div class="">
+              <p class="text-gray-500 text-[13px]">(53)</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-[1px] border-gray-200 p-3 rounded-[6px] flex flex-row gap-3 font-semibold"
+        >
+          <div
+            class="bg-gray-200 border-[1px] border-gray-300 rounded-[4px] w-[50px] p-2"
+          >
+            <img
+              class="w-full"
+              src="/src/images/banner photos/shorts.svg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-row justify-between w-full">
+            <div>
+              <p>Shorts & jeans</p>
+              <a class="text-[13px] text-pink-500" href="#">Show All</a>
+            </div>
+            <div class="">
+              <p class="text-gray-500 text-[13px]">(24)</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-[1px] border-gray-200 p-3 rounded-[6px] flex flex-row gap-3 font-semibold"
+        >
+          <div
+            class="bg-gray-200 border-[1px] border-gray-300 rounded-[4px] w-[50px] p-2"
+          >
+            <img
+              class="w-full"
+              src="/src/images/banner photos/dress.svg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-row justify-between w-full">
+            <div>
+              <p>Dress & frock</p>
+              <a class="text-[13px] text-pink-500" href="#">Show All</a>
+            </div>
+            <div class="">
+              <p class="text-gray-500 text-[13px]">(67)</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-[1px] border-gray-200 p-3 rounded-[6px] flex flex-row gap-3 font-semibold"
+        >
+          <div
+            class="bg-gray-200 border-[1px] border-gray-300 rounded-[4px] w-[50px] p-2"
+          >
+            <img
+              class="w-full"
+              src="/src/images/banner photos/tee.svg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-row justify-between w-full">
+            <div>
+              <p>T-shirts</p>
+              <a class="text-[13px] text-pink-500" href="#">Show All</a>
+            </div>
+            <div class="">
+              <p class="text-gray-500 text-[13px]">(78)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="mt-[80px]">
+      <div class="w-[85%] mx-auto mt-[80px] flex flex-col lg:flex-row gap-10">
+  <!-- Sidebar -->
+  <div class="w-[350px] hidden lg:block">
+    <div class="sticky top-8 border border-gray-300 p-4 rounded-lg">
+      <h1 class="text-lg font-bold mb-3">Categories</h1>
+      <div class="category-item flex justify-between mt-3 cursor-pointer" data-category="All">
+        <div class="flex items-center gap-2">
+          <img class="w-[24px]" src="/src/images/categories-images/all.svg" alt="">
+          <p class="font-semibold">All</p>
+        </div>
+        <p class="toggle-btn text-[23px] text-gray-500">+</p>
+      </div>
+      <div class="category-content hidden pl-6 mt-1">All Products</div>
+
+      <!-- Repeat for other categories -->
+      <!-- Clothes -->
+      <div class="category-item flex justify-between mt-3 cursor-pointer" data-category="Clothes">
+        <div class="flex items-center gap-2">
+          <img class="w-[24px]" src="/src/images/categories-images/dress (1).svg" alt="">
+          <p class="font-semibold">Clothes</p>
+        </div>
+        <p class="toggle-btn text-[23px] text-gray-500">+</p>
+      </div>
+      <div class="category-content hidden pl-6 mt-1"></div>
+
+      <!-- Footwear -->
+      <div class="category-item flex justify-between mt-3 cursor-pointer" data-category="Footwear">
+        <div class="flex items-center gap-2">
+          <img class="w-[24px]" src="/src/images/categories-images/shoes.svg" alt="">
+          <p class="font-semibold">Footwear</p>
+        </div>
+        <p class="toggle-btn text-[23px] text-gray-500">+</p>
+      </div>
+      <div class="category-content hidden pl-6 mt-1"></div>
+
+      <!-- Jewelry -->
+      <div class="category-item flex justify-between mt-3 cursor-pointer" data-category="Jewelry">
+        <div class="flex items-center gap-2">
+          <img class="w-[24px]" src="/src/images/categories-images/jewelry.svg" alt="">
+          <p class="font-semibold">Jewelry</p>
+        </div>
+        <p class="toggle-btn text-[23px] text-gray-500">+</p>
+      </div>
+      <div class="category-content hidden pl-6 mt-1"></div>
+        <div class="category-item flex justify-between mt-3 cursor-pointer" data-category="Cosmetics">
+        <div class="flex items-center gap-2">
+          <img class="w-[24px]" src="/src/images/categories-images/cosmetics.svg" alt="">
+          <p class="font-semibold">Cosmetics</p>
+          hdhdhdh
+        </div>
+        <p class="toggle-btn text-[23px] text-gray-500">+</p>
+      </div>
+      <div class="category-content hidden pl-6 mt-1"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1">
+    <!-- Top Grid -->
+    <h1 class="border-b pb-2 text-[20px] font-semibold mb-4">Products</h1>
+    <div id="productGridOne" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+    <!-- Deal Of The Day Section -->
+    <div class="border rounded-lg p-6 mt-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Deal Of The Day</h2>
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <!-- Product Image -->
+        <img src="/src/images/deal-product.png" class="w-48 md:w-64 object-contain" alt="Deal Product" />
+
+        <!-- Product Info -->
+        <div class="flex-1">
+          <div class="flex items-center gap-1 text-orange-500 mb-2">
+            ★★★☆☆
+          </div>
+          <h3 class="font-bold text-lg mb-2">SHAMPOO, CONDITIONER & FACEWASH PACKS</h3>
+          <p class="text-gray-500 mb-3">Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor sit amet consectetur Lorem ipsum dolor</p>
+          <p class="text-pink-400 font-bold text-lg mb-3">
+            $150.00 <span class="line-through text-gray-400">$200.00</span>
+          </p>
+          <button class="bg-pink-400 text-white px-6 py-2 rounded mb-4">ADD TO CART</button>
+
+          <div class="flex justify-between mb-3">
+            <p>ALREADY SOLD: <span class="font-bold">20</span></p>
+            <p>AVAILABLE: <span class="font-bold">40</span></p>
+          </div>
+          <div class="w-full h-2 bg-gray-200 rounded-full mb-4">
+            <div class="h-2 bg-pink-400 rounded-full w-1/3"></div>
+          </div>
+
+          <p class="font-semibold mb-2">HURRY UP! OFFER ENDS IN:</p>
+          <div class="flex gap-2">
+            <div class="text-center bg-gray-100 rounded p-2">
+              <div class="font-bold">360</div>
+              <div class="text-xs">Days</div>
+            </div>
+            <div class="text-center bg-gray-100 rounded p-2">
+              <div class="font-bold">24</div>
+              <div class="text-xs">Hours</div>
+            </div>
+            <div class="text-center bg-gray-100 rounded p-2">
+              <div class="font-bold">59</div>
+              <div class="text-xs">Min</div>
+            </div>
+            <div class="text-center bg-gray-100 rounded p-2">
+              <div class="font-bold">00</div>
+              <div class="text-xs">Sec</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Grid -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-6"></div>
+  </div>
+</div>
+
+     
+
+      <!-- Products Grid -->
+    </section>
+
+    <section class="mt-20">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-[85%] gap-5 mx-auto"
+      >
+        <div>
+          <img
+            class="rounded-[10px]"
+            src="/src/images/blog/blog-1.jpg"
+            alt=""
+          />
+          <div class="mt-3">
+            <p class="text-pink-400">Fashion</p>
+            <h1
+              class="font-semibold transition duration-300 cursor-pointer text-[15px] lg:text-[18px] hover:text-pink-400"
+            >
+              Clothes Retail KPIs 2021 Guide for Clothes Executives.
+            </h1>
+            <p>By Mr Admin / Apr 06, 2022</p>
+          </div>
+        </div>
+        <div>
+          <img
+            class="rounded-[10px]"
+            src="/src/images/blog/blog-2.jpg"
+            alt=""
+          />
+          <div class="mt-3">
+            <p class="text-pink-400">Fashion</p>
+            <h1
+              class="font-semibold transition duration-300 cursor-pointer text-[15px] lg:text-[18px] hover:text-pink-400"
+            >
+              Curbside fashion Trends: How to Win the Pickup Battle.
+            </h1>
+            <p>By Mr Robin / Jan 18, 2022</p>
+          </div>
+        </div>
+        <div>
+          <img
+            class="rounded-[10px]"
+            src="/src/images/blog/blog-3.jpg"
+            alt=""
+          />
+          <div class="mt-3">
+            <p class="text-pink-400">Fashion</p>
+            <h1
+              class="font-semibold transition duration-300 cursor-pointer text-[15px] lg:text-[18px] hover:text-pink-400"
+            >
+              EBT vendors: Claim Your Share of SNAP Online Revenue.
+            </h1>
+            <p>By Mr Selsa / Feb 10, 2022</p>
+          </div>
+        </div>
+        <div>
+          <img
+            class="rounded-[10px]"
+            src="/src/images/blog/blog-4.jpg"
+            alt=""
+          />
+          <div class="mt-3">
+            <p class="text-pink-400">Fashion</p>
+            <h1
+              class="font-semibold transition duration-300 cursor-pointer text-[15px] lg:text-[18px] hover:text-pink-400"
+            >
+              Curbside fashion Trends: How to Win the Pickup Battle.
+            </h1>
+            <p>By Mr Pawar / Mar 15, 2022</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav
+      class="fixed bottom-0 left-0 w-full bg-white border-t z-50 flex justify-around items-center py-2 shadow-lg block lg:hidden"
+    >
+      <button
+        id="leftSideMenuBtn"
+        class="flex flex-col items-center text-pink-500"
+      >
+        <i class="fa-solid fa-house text-xl"></i>
+        <span class="text-xs">Home</span>
+      </button>
+      <a href="#" class="flex flex-col items-center text-gray-500">
+        <i class="fa-solid fa-list text-xl"></i>
+        <span class="text-xs">Categories</span>
+      </a>
+      <a href="#" class="flex flex-col items-center text-gray-500">
+        <i class="fa-solid fa-heart text-xl"></i>
+        <span class="text-xs">Wishlist</span>
+      </a>
+      <a href="#" class="flex flex-col items-center text-gray-500">
+        <i class="fa-solid fa-cart-shopping text-xl"></i>
+        <span class="text-xs">Cart</span>
+      </a>
+      <button id="leftSideWeb" class="flex flex-col items-center text-gray-500">
+        <i id="accountIcon" class="fa-solid fa-user text-xl hidden"></i>
+        <p id="mobileUserName"></p>
+      </button>
+    </nav>
+    <div id="leftSideMenu" class="fixed inset-0 bg-black/40 z-50 hidden">
+      <div class="absolute left-0 top-0 h-screen w-3/4 max-w-xs bg-white p-6">
+        <div
+          class="flex items-center justify-between border-b border-gray-200 pb-3"
+        >
+          <div>
+            <h1>Menu</h1>
+          </div>
+          <div>
+            <button id="closeLeftSideMenu" class="text-2xl">&times;</button>
+          </div>
+        </div>
+        <!-- Make this div scrollable and fill the remaining height -->
+        <div
+          class="flex flex-col mt-5 overflow-y-auto max-h-[calc(100vh-64px)]"
+        >
+          <div class="mt-3 border-b border-gray-200">
+            <div class="flex flex-row languageCurrencyDiv pb-2 justify-between">
+              <h1>Language</h1>
+
+              <div>
+                <i class="fa-solid fa-caret-left caretLeft"></i>
+                <i class="fa-solid fa-caret-down hidden caretBottom"></i>
+              </div>
+            </div>
+            <div
+              class="border-[1px] flex flex-col rounded-[9px] languageCurrencyInfo hidden p-2 transition duration-300 border-gray-200"
+            >
+              <p
+                class="border-b border-gray-200 pb-1 cursor-pointer text-gray-600 hover:text-black"
+              >
+                English
+              </p>
+              <p
+                class="border-b border-gray-200 pb-1 cursor-pointer text-gray-600 hover:text-black"
+              >
+                Albania
+              </p>
+              <p class="pb-1 cursor-pointer text-gray-600 hover:text-black">
+                Spanish
+              </p>
+            </div>
+          </div>
+          <div class="border-b border-gray-200 pb-2">
+            <div class="flex flex-row mt-3 languageCurrencyDiv justify-between">
+              <h1>Currency</h1>
+              <div>
+                <i class="fa-solid fa-caret-left caretLeft"></i>
+                <i class="fa-solid fa-caret-down hidden caretBottom"></i>
+              </div>
+            </div>
+            <div
+              class="border-[1px] flex flex-col languageCurrencyInfo rounded-[9px] hidden p-2 transition duration-300 border-gray-200"
+            >
+              <p
+                class="border-b border-gray-200 pb-1 cursor-pointer text-gray-600 hover:text-black"
+              >
+                English
+              </p>
+              <p
+                class="border-b border-gray-200 pb-1 cursor-pointer text-gray-600 hover:text-black"
+              >
+                Albania
+              </p>
+              <p class="pb-1 cursor-pointer text-gray-600 hover:text-black">
+                Spanish
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center gap-2 mt-5 text-gray-600">
+          <i
+            class="fa-brands fa-facebook bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-twitter bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-instagram bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-linkedin bg-gray-200 p-1 rounded cursor-pointer"
+          ></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category left for menu -->
+
+    <div
+      id="leftSideContent"
+      class="w-[300px] hidden border-[1px] overflow-y-auto max-h-[calc(100vh-55px)] p-2 fixed left-0 top-0 z-10 bg-white"
+    >
+      <div class="w-full p-4 rounded-[8px]">
+        <div class="flex items-center justify-between">
+          <h1>Category</h1>
+          <div>
+            <button id="closeCategories" class="text-[20px]">&times;</button>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/dress (1).svg"
+              alt=""
+            />
+            <p class="font-semibold">Clothes</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/shoes.svg"
+              alt=""
+            />
+            <p class="font-semibold">Footwear</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/jewelry.svg"
+              alt=""
+            />
+            <p class="font-semibold">Jewelry</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/perfume.svg"
+              alt=""
+            />
+            <p class="font-semibold">Perfume</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/cosmetics.svg"
+              alt=""
+            />
+            <p class="font-semibold">Cosmetics</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/glasses.svg"
+              alt=""
+            />
+            <p class="font-semibold">Glases</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+        <div id="infoCategories" class="flex justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <img
+              class="w-[24px]"
+              src="/src/images/categories-images/bag.svg"
+              alt=""
+            />
+            <p class="font-semibold">Bags</p>
+          </div>
+          <div>
+            <p id="infoCategoriesBtn" class="text-[23px] text-gray-500">+</p>
+          </div>
+        </div>
+        <div id="infoCategoriesContent" class="hidden justify-between">
+          <div>
+            <h1>Shirts</h1>
+          </div>
+          <div>
+            <p>300</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1 class="text-[22px] text-gray-700 pt-4">Best Sellers</h1>
+        <div class="flex flex-col">
+          <div class="flex flex-row gap-5 mt-5">
+            <div>
+              <img
+                class="w-[70px]"
+                src="/src/images/best-seller-here/1.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h1
+                class="w-[130px] capitalize whitespace-nowrap overflow-hidden text-ellipsis"
+              >
+                baby fabric shoes
+              </h1>
+              <div class="text-[10px]">
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+              </div>
+              <p class="font-bold text-gray-600">
+                <span
+                  class="line-through text-[12px] mr-2 font-semibold text-black"
+                  >$5.00
+                </span>
+                $4.00
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-row gap-5 mt-10">
+            <div>
+              <img
+                class="w-[70px]"
+                src="/src/images/best-seller-here/2.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h1
+                class="w-[130px] capitalize whitespace-nowrap overflow-hidden text-ellipsis"
+              >
+                baby fabric shoes
+              </h1>
+              <div class="text-[10px]">
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+              </div>
+              <p class="font-bold text-gray-600">
+                <span
+                  class="line-through text-[12px] mr-2 font-semibold text-black"
+                  >$5.00
+                </span>
+                $4.00
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-row gap-5 mt-10">
+            <div>
+              <img
+                class="w-[70px]"
+                src="/src/images/best-seller-here/3.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h1
+                class="w-[130px] capitalize whitespace-nowrap overflow-hidden text-ellipsis"
+              >
+                baby fabric shoes
+              </h1>
+              <div class="text-[10px]">
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+              </div>
+              <p class="font-bold text-gray-600">
+                <span
+                  class="line-through text-[12px] mr-2 font-semibold text-black"
+                  >$5.00
+                </span>
+                $4.00
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-row gap-5 mt-10">
+            <div>
+              <img
+                class="w-[70px]"
+                src="/src/images/best-seller-here/4.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h1
+                class="w-full capitalize whitespace-nowrap overflow-hidden text-ellipsis"
+              >
+                men's hoodies t-shirt
+              </h1>
+              <div class="text-[10px]">
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+                <i class="fa-solid fa-star text-yellow-400"></i>
+              </div>
+              <p class="font-bold text-gray-600">
+                <span
+                  class="line-through text-[12px] mr-2 font-semibold text-black"
+                  >$5.00
+                </span>
+                $4.00
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-[#1c1c1c] text-gray-300 pt-12 mt-20">
+      <!-- Brand Directory -->
+      <div class="w-[90%] mx-auto border-b border-gray-700 pb-8">
+        <h2 class="text-[#ff5e69] font-semibold tracking-wide">
+          BRAND DIRECTORY
+        </h2>
+
+        <div class="mt-4 space-y-4 text-sm leading-relaxed">
+          <p>
+            <span class="font-semibold text-white">FASHION :</span>
+            T-Shirt | Shirts | Shorts & Jeans | Jacket | Dress & Frock |
+            Innerwear | Hosiery
+          </p>
+
+          <p>
+            <span class="font-semibold text-white">FOOTWEAR :</span>
+            Sport | Formal | Boots | Casual | Cowboy Shoes | Safety Shoes |
+            Party Wear Shoes | Branded | Firstcopy | Long Shoes
+          </p>
+
+          <p>
+            <span class="font-semibold text-white">JEWELLERY :</span>
+            Necklace | Earrings | Couple Rings | Pendants | Crystal | Bangles |
+            Bracelets | Nosepin | Chain
+          </p>
+
+          <p>
+            <span class="font-semibold text-white">COSMETICS :</span>
+            Shampoo | Bodywash | Facewash | Makeup Kit | Liner | Lipstick |
+            Perfume | Body Soap | Scrub | Hair Gel | Hair Colors | Sunscreen |
+            Skin Lotion
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Columns -->
+      <div
+        class="w-[90%] mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10"
+      >
+        <!-- Popular Categories -->
+        <div>
+          <h3
+            class="text-white font-semibold mb-3 border-b border-red-500 pb-1 inline-block"
+          >
+            POPULAR CATEGORIES
+          </h3>
+          <ul class="space-y-2">
+            <li>Fashion</li>
+            <li>Electronic</li>
+            <li>Cosmetic</li>
+            <li>Health</li>
+            <li>Watches</li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div>
+          <h3
+            class="text-white font-semibold mb-3 border-b border-red-500 pb-1 inline-block"
+          >
+            PRODUCTS
+          </h3>
+          <ul class="space-y-2">
+            <li>Prices Drop</li>
+            <li>New Products</li>
+            <li>Best Sales</li>
+            <li>Contact Us</li>
+            <li>Sitemap</li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3
+            class="text-white font-semibold mb-3 border-b border-red-500 pb-1 inline-block"
+          >
+            OUR COMPANY
+          </h3>
+          <ul class="space-y-2">
+            <li>Delivery</li>
+            <li>Legal Notice</li>
+            <li>Terms And Conditions</li>
+            <li>About Us</li>
+            <li>Secure Payment</li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3
+            class="text-white font-semibold mb-3 border-b border-red-500 pb-1 inline-block"
+          >
+            SERVICES
+          </h3>
+          <ul class="space-y-2">
+            <li>Prices Drop</li>
+            <li>New Products</li>
+            <li>Best Sales</li>
+            <li>Contact Us</li>
+            <li>Sitemap</li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3
+            class="text-white font-semibold mb-3 border-b border-red-500 pb-1 inline-block"
+          >
+            CONTACT
+          </h3>
+
+          <p class="mt-2 flex items-start gap-2">
+            <i class="fa-solid fa-location-dot mt-1"></i>
+            419 State 414 Rte Beaver Dams, New York(NY), 14812, USA
+          </p>
+
+          <p class="mt-3 flex items-center gap-2">
+            <i class="fa-solid fa-phone"></i>
+            (607) 936-8058
+          </p>
+
+          <p class="mt-3 flex items-center gap-2">
+            <i class="fa-solid fa-envelope"></i>
+            Example@gmail.com
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="mt-12 flex flex-col items-center gap-4">
+        <img class="h-8 object-contain" alt="payment" />
+        <p class="text-gray-400 text-sm">
+          Copyright © Anon All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="src/js/script.js"></script>
+  </body>
+</html>
+
+
+
