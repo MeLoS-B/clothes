@@ -21,7 +21,7 @@ function renderLiked() {
       "flex items-center justify-between bg-white p-4 rounded-lg shadow";
 
    div.innerHTML = `
-  <a href="/src/pages/product-single-page.html?id=${item.id}" 
+  <a href="./src/pages/product-single-page.html?id=${item.id}" 
      class="flex items-center gap-4 cursor-pointer">
      
     <img src="${item.img}" class="w-20 h-20 object-cover rounded-lg"/>

@@ -11,18 +11,16 @@
 
 <body class="bg-gray-100">
 
-<!-- MAIN WRAPPER -->
+
 <div class="max-w-6xl mx-auto p-6">
 
-  <!-- PRODUCT CARD -->
   <div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col lg:flex-row gap-10">
 
-    <!-- IMAGE -->
     <div class="flex-1">
       <img id="productImg" src="" class="w-full rounded-2xl shadow-sm object-cover">
     </div>
 
-    <!-- PRODUCT INFO -->
+
     <div class="flex-1 flex flex-col gap-4">
 
       <h1 id="productName" class="text-4xl font-bold text-gray-900"></h1>
@@ -38,7 +36,6 @@
         <p id="productOldPrice" class="text-gray-400 line-through text-xl"></p>
       </div>
 
-      <!-- QUANTITY -->
       <div class="flex items-center gap-4 mt-4">
         <span class="font-medium">Quantity:</span>
         <button id="minusQty" class="w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-xl flex items-center justify-center">-</button>
@@ -46,7 +43,7 @@
         <button id="plusQty" class="w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-xl flex items-center justify-center">+</button>
       </div>
 
-      <!-- BUTTONS -->
+      
       <div class="flex gap-4 mt-6">
         <button id="addToCart" class="flex-1 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl flex items-center justify-center gap-3">
           <i class="fa-solid fa-cart-plus text-xl"></i> Add to Cart
@@ -60,7 +57,7 @@
 
   </div>
 
-  <!-- SIMILAR PRODUCTS -->
+  
   <h2 class="text-2xl font-bold mt-12 mb-4 text-gray-900">Similar Products</h2>
   <div id="similarProducts" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
 
@@ -70,7 +67,7 @@
 
 
 
-<!-- BUY MODAL -->
+
 <div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
   <div class="bg-white p-6 rounded-xl max-w-md w-full shadow-lg">
 
@@ -98,7 +95,7 @@
 
 
 
-<!-- ARE YOU SURE MODAL -->
+
 <div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
   <div class="bg-white p-6 rounded-xl max-w-sm w-full shadow-lg">
 
@@ -118,7 +115,7 @@
 
 
 <script>
-  /* PRODUCT DATA */
+  
   const products = [
     { id: "1", name: "Jacket", price: 48, oldPrice: 75, description: "Mens Winter Leather Jackets", img: "/src/images/newproducts/jacket-1.jpg", rating: 3 },
     { id: "2", name: "Coat", price: 60, oldPrice: 90, description: "Stylish Winter Coat", img: "/src/images/newproducts/jacket-1.jpg", rating: 4 },
@@ -153,7 +150,7 @@
     const similar = products.filter(p => p.id !== product.id).slice(0, 4);
     document.getElementById("similarProducts").innerHTML =
       similar.map(p => `
-        <a href="product.html?id=${p.id}" class="bg-white p-3 rounded-xl shadow hover:shadow-md transition block">
+        <a href="product-single-page.html?id=${p.id}" class="bg-white p-3 rounded-xl shadow hover:shadow-md transition block">
           <img src="${p.img}" class="w-full h-40 object-cover rounded-xl">
           <h3 class="font-semibold mt-2">${p.name}</h3>
           <p class="text-pink-500 font-bold">$${p.price}</p>
@@ -168,7 +165,7 @@
   };
   document.getElementById("plusQty").onclick = () => qtyInput.value++;
 
-  /* ADD TO CART */
+  
   document.getElementById("addToCart").onclick = () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let existing = cart.find(i => i.id === product.id);
@@ -182,7 +179,6 @@
 
 
 
-  /* BUY NOW BUTTON → OPENS BUY MODAL */
   document.getElementById("buyNow").onclick = () => {
     document.getElementById("modalProductName").innerText = product.name;
     document.getElementById("modalProductPrice").innerText = "$" + product.price;
@@ -199,7 +195,7 @@
 
 
 
-  /* CONTINUE → OPEN CONFIRM MODAL */
+
   document.getElementById("confirmBuy").onclick = () => {
     document.getElementById("buyModal").classList.add("hidden");
 
@@ -207,12 +203,11 @@
     document.getElementById("confirmModal").classList.add("flex");
   };
 
-  /* CANCEL CONFIRM */
   document.getElementById("cancelConfirm").onclick = () => {
     document.getElementById("confirmModal").classList.add("hidden");
   };
 
-  /* FINAL BUY */
+ 
   document.getElementById("finalBuy").onclick = () => {
     document.getElementById("confirmModal").classList.add("hidden");
     alert("Purchase completed successfully!");

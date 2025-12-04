@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+
+<body class="bg-gray-50">
+
+
+  <section class="w-full h-[260px] bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center">
+    <h1 class="text-white text-4xl font-bold tracking-wide">Blog Details</h1>
+  </section>
+
+
+  <section class="w-[80%] sm:w-[80%] lg:w-[60%] mx-auto -mt-16 mb-20">
+
+    <div class="bg-white  rounded-2xl shadow-xl p-8" id="singleBlog">
+    
+    </div>
+
+  </section>
+
+  <script src="/src/js/blogData.js"></script>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+
+    const post = blogPosts.find(p => p.id === id);
+
+    document.getElementById("singleBlog").innerHTML = `
+ 
+      <img src="${post.image}" class="w-full rounded-xl mb-6 shadow-md">
+
+    
+      <p class="text-pink-500 text-sm font-semibold tracking-wide uppercase">${post.category}</p>
+
+    
+      <h1 class="text-3xl lg:text-4xl font-extrabold mt-2 leading-tight text-gray-900">
+        ${post.title}
+      </h1>
+
+      
+      <p class="mt-2 mb-6 text-gray-500 text-sm">
+        By <span class="font-semibold text-gray-700">${post.author}</span> • ${post.date}
+      </p>
+
+
+      <div class="mt-6 text-gray-700 leading-8 text-[17px]">
+        ${post.content}
+      </div>
+
+    
+      <button 
+        class="mt-10 px-6 py-3 bg-pink-500 text-white rounded-full text-sm font-semibold shadow-md hover:bg-pink-600 transition"
+        onclick="window.location.href='/src/pages/blog.html'"
+      >
+        ← Back to all blogs
+      </button>
+    `;
+  </script>
+
+</body>
+</html>

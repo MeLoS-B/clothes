@@ -12,12 +12,12 @@ const passwordError = document.getElementById("passwordError");
 const termsCheckbox = document.getElementById("acceptTerms");
 const submitSignIn = document.getElementById("submitSignIn");
 
-// REGEX
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
 const phoneRegex = /^(?:\+383|0)?(4[3-9]|[1-2][4-9])[0-9]{6}$/;
 
-// VALIDATION LISTENERS
+
 passwordInput.addEventListener("input", () => {
   if (!passwordRegex.test(passwordInput.value)) {
     passwordError.textContent =
@@ -43,7 +43,7 @@ phoneInput.addEventListener("input", () => {
   }
 });
 
-// REGISTER BUTTON
+
 submitSignIn.addEventListener("click", () => {
   const name = nameInput.value.trim();
   const surname = surnameInput.value.trim();
@@ -52,7 +52,6 @@ submitSignIn.addEventListener("click", () => {
   const email = emailInput.value.trim();
   const password = passwordInput.value;
 
-  // BASIC VALIDATION
   if (!name || !surname || !phone || !address || !email || !password) {
     alert("Please fill all fields");
     return;
@@ -72,16 +71,15 @@ submitSignIn.addEventListener("click", () => {
     return;
   }
 
-  // READ EXISTING USERS
+ 
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
-  // CHECK IF USER ALREADY EXISTS
   if (users.some((user) => user.email === email)) {
     alert("Ky email ekziston tashmë!");
     return;
   }
 
-  // CREATE NEW USER
+
   const newUser = {
     name,
     surname,
@@ -93,7 +91,6 @@ submitSignIn.addEventListener("click", () => {
 
   users.push(newUser);
 
-  // SAVE TO LOCALSTORAGE
   localStorage.setItem("users", JSON.stringify(users));
 
   alert("Llogaria u krijua me sukses!");

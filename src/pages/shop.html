@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+
+  <div class="max-w-7xl mx-auto py-10 px-5">
+
+
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800">Shop</h1>
+      <div class="flex items-center gap-4">
+        <a href="/src/pages/cart.html">
+                <button class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
+                Cart <span id="cartCount" class="font-bold"></span>
+                </button>
+
+        </a>
+      </div>
+    </div>
+
+    
+    <div class="mb-8 flex flex-wrap gap-3">
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="All">All</button>
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="Clothes">Clothes</button>
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="Footwear">Footwear</button>
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="Jewelry">Jewelry</button>
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="Cosmetics">Cosmetics</button>
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="Men">Men</button>
+      <button class="category-btn bg-white border border-gray-300 px-4 py-2 rounded hover:bg-pink-50 transition" data-category="Women">Women</button>
+    </div>
+
+    
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      
+      <div class="col-span-full text-center text-gray-500 py-10">Products will appear here...</div>
+    </div>
+
+ 
+    <!-- <div class="mt-10 text-center">
+      <button id="loadMoreBtn" class="bg-pink-500 text-white px-6 py-3 rounded hover:bg-pink-600 transition">
+        Load More
+      </button>
+    </div> -->
+
+  </div>
+
+
+  <script src="/src/js/shop.js"></script>
+
+</body>
+</html>

@@ -1,12 +1,12 @@
-// Load cart from localStorage
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// DOM elements
+
 const cartItemsDiv = document.getElementById("cartItems");
 const totalPriceSpan = document.getElementById("totalPrice");
 const totalItemsSpan = document.getElementById("totalItems");
 
-// Render cart items
+
 function renderCart() {
   cartItemsDiv.innerHTML = '';
   if (cart.length === 0) {
