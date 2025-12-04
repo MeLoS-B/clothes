@@ -1,6 +1,6 @@
 
 
-const allProducts = [
+window.allProducts = [
     { id: "1", name: "Jacket", category: "Clothes", price: 230, oldPrice: 55, description: "Mens Winter Leather Jackets", img: "./src/images/newproducts/jacket-1.jpg", rating: 3 },
     { id: "2", name: "Jeans", category: "Men", price: 230, oldPrice: 55, description: "Mens Winter Leather Jackets", img: "./src/images/newproducts/jacket-1.jpg", rating: 3 },
     { id: "3", name: "Jacket", category: "Women", price: 230, oldPrice: 55, description: "Mens Winter Leather Jackets", img: "./src/images/newproducts/jacket-1.jpg", rating: 3 },
