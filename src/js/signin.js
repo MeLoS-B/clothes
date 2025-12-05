@@ -95,5 +95,5 @@ submitSignIn.addEventListener("click", () => {
 
   alert("Llogaria u krijua me sukses!");
 
-  window.location.href = "/public/auth/login.html";
+  window.location.href = "./public/auth/login.html";
 });

@@ -109,7 +109,7 @@ window.addToLiked = function(id) {
 };
 window.viewProduct = function(id){
 
-    window.location.href = `/src/pages/product-single-page.html?id=${id}`
+    window.location.href = `./src/pages/product-single-page.html?id=${id}`
 
 }
 

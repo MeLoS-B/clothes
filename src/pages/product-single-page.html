@@ -1,218 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Page</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-</head>
+  <body class="bg-gray-100">
+    <div class="mx-auto max-w-[1400px]">
+    
+      <section
+        class="w-full h-[120px] sm:h-[150px] bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center px-4"
+      >
+        <h1 class="text-white text-xl sm:text-2xl lg:text-3xl font-bold">
+          Product Details
+        </h1>
+      </section>
 
-<body class="bg-gray-100">
+     
+      <section
+        class="w-[90%] sm:w-[85%] mx-auto mt-8 sm:mt-12 mb-20 px-4 sm:px-0"
+      >
+        <div
+          class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10"
+        >
+    
+          <div class="flex-1">
+            <img
+              id="productImg"
+              src=""
+              class="w-full rounded-xl sm:rounded-2xl shadow-sm object-cover"
+            />
+          </div>
 
+        
+          <div class="flex-1 flex flex-col gap-4 sm:gap-5">
+            <h1
+              id="productName"
+              class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900"
+            ></h1>
 
-<div class="max-w-6xl mx-auto p-6">
+            <div class="flex items-center gap-2">
+              <span
+                id="productRating"
+                class="text-yellow-400 text-lg sm:text-xl"
+              ></span>
+            </div>
 
-  <div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col lg:flex-row gap-10">
+            <p
+              id="productDesc"
+              class="text-gray-600 text-sm sm:text-base lg:text-lg"
+            ></p>
 
-    <div class="flex-1">
-      <img id="productImg" src="" class="w-full rounded-2xl shadow-sm object-cover">
+            <div class="flex items-center gap-4">
+              <p
+                id="productPrice"
+                class="text-2xl sm:text-3xl font-bold text-pink-600"
+              ></p>
+              <p
+                id="productOldPrice"
+                class="text-gray-400 line-through text-lg sm:text-xl"
+              ></p>
+            </div>
+
+         
+            <div class="flex items-center gap-3 sm:gap-4 mt-4">
+              <span class="font-medium text-sm sm:text-base">Quantity:</span>
+              <button
+                id="minusQty"
+                class="w-8 sm:w-10 h-8 sm:h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-lg sm:text-xl flex items-center justify-center transition"
+              >
+                −
+              </button>
+              <input
+                id="quantity"
+                type="number"
+                value="1"
+                min="1"
+                class="w-12 sm:w-16 h-8 sm:h-10 text-center border border-gray-300 rounded-lg text-sm sm:text-base"
+              />
+              <button
+                id="plusQty"
+                class="w-8 sm:w-10 h-8 sm:h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-lg sm:text-xl flex items-center justify-center transition"
+              >
+                +
+              </button>
+            </div>
+
+        
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
+              <button
+                id="addToCart"
+                class="flex-1 py-2 sm:py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition text-sm sm:text-base"
+              >
+                <i class="fa-solid fa-cart-plus text-lg"></i> Add to Cart
+              </button>
+              <button
+                id="buyNow"
+                class="flex-1 py-2 sm:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl transition text-sm sm:text-base"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+   
+        <h2
+          class="text-xl sm:text-2xl lg:text-3xl font-bold mt-12 sm:mt-16 mb-6 sm:mb-8 text-gray-900"
+        >
+          Similar Products
+        </h2>
+        <div
+          id="similarProducts"
+          class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+        ></div>
+      </section>
     </div>
 
+   
+    <div
+      id="buyModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white p-6 sm:p-8 rounded-xl max-w-md w-full shadow-lg">
+        <h2 class="text-xl sm:text-2xl font-bold mb-4">Buy Product</h2>
 
-    <div class="flex-1 flex flex-col gap-4">
+        <p class="text-gray-600 mb-3 text-sm sm:text-base">
+          Product: <span id="modalProductName" class="font-semibold"></span>
+        </p>
+        <p class="text-gray-600 mb-3 text-sm sm:text-base">
+          Price: <span id="modalProductPrice" class="font-semibold"></span>
+        </p>
+        <p class="text-gray-600 mb-3 text-sm sm:text-base">
+          Quantity: <span id="modalProductQty" class="font-semibold"></span>
+        </p>
 
-      <h1 id="productName" class="text-4xl font-bold text-gray-900"></h1>
+        <p class="text-gray-900 text-lg sm:text-xl font-bold mt-6">
+          Total: <span id="modalTotal"></span>
+        </p>
 
-      <div class="flex items-center gap-2">
-        <span id="productRating" class="text-yellow-400 text-xl"></span>
-      </div>
-
-      <p id="productDesc" class="text-gray-600 text-lg"></p>
-
-      <div class="flex items-center gap-4">
-        <p id="productPrice" class="text-3xl font-bold text-pink-600"></p>
-        <p id="productOldPrice" class="text-gray-400 line-through text-xl"></p>
-      </div>
-
-      <div class="flex items-center gap-4 mt-4">
-        <span class="font-medium">Quantity:</span>
-        <button id="minusQty" class="w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-xl flex items-center justify-center">-</button>
-        <input id="quantity" type="number" value="1" min="1" class="w-16 h-10 text-center border border-gray-300 rounded-lg">
-        <button id="plusQty" class="w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 text-xl flex items-center justify-center">+</button>
-      </div>
-
-      
-      <div class="flex gap-4 mt-6">
-        <button id="addToCart" class="flex-1 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl flex items-center justify-center gap-3">
-          <i class="fa-solid fa-cart-plus text-xl"></i> Add to Cart
-        </button>
-
-        <button id="buyNow" class="flex-1 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl">
-          Buy Now
-        </button>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
+          <button
+            id="closeBuyModal"
+            class="flex-1 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 font-semibold text-sm sm:text-base transition"
+          >
+            Cancel
+          </button>
+          <button
+            id="confirmBuy"
+            class="flex-1 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold text-sm sm:text-base transition"
+          >
+            Continue
+          </button>
+        </div>
       </div>
     </div>
 
-  </div>
+   
+    <div
+      id="confirmModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white p-6 sm:p-8 rounded-xl max-w-sm w-full shadow-lg">
+        <h2 class="text-xl sm:text-2xl font-bold mb-4">Are you sure?</h2>
+        <p class="text-gray-600 text-sm sm:text-base">
+          Do you want to complete the purchase?
+        </p>
 
-  
-  <h2 class="text-2xl font-bold mt-12 mb-4 text-gray-900">Similar Products</h2>
-  <div id="similarProducts" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
-
-</div>
-
-
-
-
-
-
-<div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
-  <div class="bg-white p-6 rounded-xl max-w-md w-full shadow-lg">
-
-    <h2 class="text-2xl font-bold mb-4">Buy Product</h2>
-
-    <p class="text-gray-600 mb-2">Product: <span id="modalProductName" class="font-semibold"></span></p>
-    <p class="text-gray-600 mb-2">Price: <span id="modalProductPrice" class="font-semibold"></span></p>
-    <p class="text-gray-600 mb-2">Quantity: <span id="modalProductQty" class="font-semibold"></span></p>
-
-    <p class="text-gray-900 text-lg font-bold mt-4">
-      Total: <span id="modalTotal"></span>
-    </p>
-
-    <div class="flex gap-4 mt-6">
-      <button id="closeBuyModal" class="flex-1 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Cancel</button>
-      <button id="confirmBuy" class="flex-1 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
-        Continue
-      </button>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
+          <button
+            id="cancelConfirm"
+            class="flex-1 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 font-semibold text-sm sm:text-base transition"
+          >
+            No
+          </button>
+          <button
+            id="finalBuy"
+            class="flex-1 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold text-sm sm:text-base transition"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
     </div>
 
-  </div>
-</div>
+    <script>
+      const products = [
+        {
+          id: "1",
+          name: "Jacket",
+          price: 48,
+          oldPrice: 75,
+          description: "Mens Winter Leather Jackets",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 3,
+        },
+        {
+          id: "2",
+          name: "Coat",
+          price: 60,
+          oldPrice: 90,
+          description: "Stylish Winter Coat",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 4,
+        },
+        {
+          id: "3",
+          name: "Shirt",
+          price: 120,
+          oldPrice: 50,
+          description: "Casual Shirt",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 5,
+        },
+        {
+          id: "4",
+          name: "Jeans",
+          price: 70,
+          oldPrice: 50,
+          description: "Casual Shirt",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 5,
+        },
+        {
+          id: "5",
+          name: "T-shirt",
+          price: 30,
+          oldPrice: 50,
+          description: "Casual Shirt",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 5,
+        },
+        {
+          id: "6",
+          name: "Shirt",
+          price: 100,
+          oldPrice: 50,
+          description: "Casual Shirt",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 5,
+        },
+        {
+          id: "7",
+          name: "Shirt",
+          price: 100,
+          oldPrice: 50,
+          description: "Casual Shirt",
+          img: "./src/images/newproducts/jacket-1.jpg",
+          rating: 5,
+        },
+      ];
 
+      function getStars(rating) {
+        let s = "";
+        for (let i = 0; i < 5; i++) {
+          s +=
+            i < rating
+              ? '<i class="fa-solid fa-star"></i>'
+              : '<i class="fa-regular fa-star"></i>';
+        }
+        return s;
+      }
 
+      const id = new URLSearchParams(window.location.search).get("id");
+      const product = products.find((p) => p.id === id);
 
+      if (!product) {
+        document.body.innerHTML =
+          '<div class="text-center mt-20 text-xl">Product not found</div>';
+      } else {
+        document.getElementById("productName").innerText = product.name;
+        document.getElementById("productDesc").innerText = product.description;
+        document.getElementById("productPrice").innerText = "$" + product.price;
+        document.getElementById("productOldPrice").innerText =
+          "$" + product.oldPrice;
+        document.getElementById("productImg").src = product.img;
+        document.getElementById("productRating").innerHTML = getStars(
+          product.rating
+        );
 
+        const similar = products.filter((p) => p.id !== product.id).slice(0, 4);
+        document.getElementById("similarProducts").innerHTML = similar
+          .map(
+            (p) => `
+          <a href="product-single-page.html?id=${p.id}" class="bg-white p-3 sm:p-4 rounded-xl shadow hover:shadow-lg transition block">
+            <img src="${p.img}" class="w-full h-32 sm:h-40 object-cover rounded-lg">
+            <h3 class="font-semibold mt-2 text-sm sm:text-base truncate">${p.name}</h3>
+            <p class="text-pink-500 font-bold text-sm sm:text-base">$${p.price}</p>
+          </a>
+        `
+          )
+          .join("");
+      }
 
+      const qtyInput = document.getElementById("quantity");
 
-<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
-  <div class="bg-white p-6 rounded-xl max-w-sm w-full shadow-lg">
+      document.getElementById("minusQty").onclick = () => {
+        if (qtyInput.value > 1) qtyInput.value--;
+      };
+      document.getElementById("plusQty").onclick = () => qtyInput.value++;
 
-    <h2 class="text-xl font-bold mb-4">Are you sure?</h2>
-    <p class="text-gray-600">Do you want to complete the purchase?</p>
+      document.getElementById("addToCart").onclick = () => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let existing = cart.find((i) => i.id === product.id);
 
-    <div class="flex gap-4 mt-6">
-      <button id="cancelConfirm" class="flex-1 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">No</button>
-      <button id="finalBuy" class="flex-1 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Yes</button>
-    </div>
+        if (existing) existing.quantity += parseInt(qtyInput.value);
+        else cart.push({ ...product, quantity: parseInt(qtyInput.value) });
 
-  </div>
-</div>
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Added to cart!");
+      };
 
+      document.getElementById("buyNow").onclick = () => {
+        document.getElementById("modalProductName").innerText = product.name;
+        document.getElementById("modalProductPrice").innerText =
+          "$" + product.price;
+        document.getElementById("modalProductQty").innerText = qtyInput.value;
+        document.getElementById("modalTotal").innerText =
+          "$" + product.price * qtyInput.value;
 
+        document.getElementById("buyModal").classList.remove("hidden");
+        document.getElementById("buyModal").classList.add("flex");
+      };
 
+      document.getElementById("closeBuyModal").onclick = () => {
+        document.getElementById("buyModal").classList.add("hidden");
+      };
 
+      document.getElementById("confirmBuy").onclick = () => {
+        document.getElementById("buyModal").classList.add("hidden");
+        document.getElementById("confirmModal").classList.remove("hidden");
+        document.getElementById("confirmModal").classList.add("flex");
+      };
 
-<script>
-  
-  const products = [
-    { id: "1", name: "Jacket", price: 48, oldPrice: 75, description: "Mens Winter Leather Jackets", img: "/src/images/newproducts/jacket-1.jpg", rating: 3 },
-    { id: "2", name: "Coat", price: 60, oldPrice: 90, description: "Stylish Winter Coat", img: "/src/images/newproducts/jacket-1.jpg", rating: 4 },
-    { id: "3", name: "Shirt", price: 120, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
-    { id: "4", name: "Jeans", price: 70, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
-    { id: "5", name: "T-shirt", price: 30, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
-    { id: "6", name: "Shirt", price: 100, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 },
-    { id: "7", name: "Shirt", price: 100, oldPrice: 50, description: "Casual Shirt", img: "/src/images/newproducts/jacket-1.jpg", rating: 5 }
-  ];
+      document.getElementById("cancelConfirm").onclick = () => {
+        document.getElementById("confirmModal").classList.add("hidden");
+      };
 
-  function getStars(rating) {
-    let s = "";
-    for (let i = 0; i < 5; i++) {
-      s += i < rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
-    }
-    return s;
-  }
-
-  const id = new URLSearchParams(window.location.search).get("id");
-  const product = products.find(p => p.id === id);
-
-  if (!product) {
-    document.body.innerHTML = "Product not found";
-  } else {
-    document.getElementById("productName").innerText = product.name;
-    document.getElementById("productDesc").innerText = product.description;
-    document.getElementById("productPrice").innerText = "$" + product.price;
-    document.getElementById("productOldPrice").innerText = "$" + product.oldPrice;
-    document.getElementById("productImg").src = product.img;
-    document.getElementById("productRating").innerHTML = getStars(product.rating);
-
-    const similar = products.filter(p => p.id !== product.id).slice(0, 4);
-    document.getElementById("similarProducts").innerHTML =
-      similar.map(p => `
-        <a href="product-single-page.html?id=${p.id}" class="bg-white p-3 rounded-xl shadow hover:shadow-md transition block">
-          <img src="${p.img}" class="w-full h-40 object-cover rounded-xl">
-          <h3 class="font-semibold mt-2">${p.name}</h3>
-          <p class="text-pink-500 font-bold">$${p.price}</p>
-        </a>
-      `).join("");
-  }
-
-  const qtyInput = document.getElementById("quantity");
-
-  document.getElementById("minusQty").onclick = () => {
-    if (qtyInput.value > 1) qtyInput.value--;
-  };
-  document.getElementById("plusQty").onclick = () => qtyInput.value++;
-
-  
-  document.getElementById("addToCart").onclick = () => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let existing = cart.find(i => i.id === product.id);
-
-    if (existing) existing.quantity += parseInt(qtyInput.value);
-    else cart.push({ ...product, quantity: parseInt(qtyInput.value) });
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Added to cart!");
-  };
-
-
-
-  document.getElementById("buyNow").onclick = () => {
-    document.getElementById("modalProductName").innerText = product.name;
-    document.getElementById("modalProductPrice").innerText = "$" + product.price;
-    document.getElementById("modalProductQty").innerText = qtyInput.value;
-    document.getElementById("modalTotal").innerText = "$" + (product.price * qtyInput.value);
-
-    document.getElementById("buyModal").classList.remove("hidden");
-    document.getElementById("buyModal").classList.add("flex");
-  };
-
-  document.getElementById("closeBuyModal").onclick = () => {
-    document.getElementById("buyModal").classList.add("hidden");
-  };
-
-
-
-
-  document.getElementById("confirmBuy").onclick = () => {
-    document.getElementById("buyModal").classList.add("hidden");
-
-    document.getElementById("confirmModal").classList.remove("hidden");
-    document.getElementById("confirmModal").classList.add("flex");
-  };
-
-  document.getElementById("cancelConfirm").onclick = () => {
-    document.getElementById("confirmModal").classList.add("hidden");
-  };
-
- 
-  document.getElementById("finalBuy").onclick = () => {
-    document.getElementById("confirmModal").classList.add("hidden");
-    alert("Purchase completed successfully!");
-  };
-</script>
-
-</body>
+      document.getElementById("finalBuy").onclick = () => {
+        document.getElementById("confirmModal").classList.add("hidden");
+        alert("Purchase completed successfully!");
+      };
+    </script>
+  </body>
 </html>

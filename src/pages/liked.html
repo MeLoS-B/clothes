@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Liked Products</title>
-  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-/>
- 
-  <link rel="stylesheet" href="/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liked Products</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-<body class="bg-gray-100">
+  <body class="bg-gray-100">
+    <div class="mx-auto max-w-[1400px]">
+      
+      <section
+        class="w-full h-[150px] sm:h-[200px] bg-gradient-to-r from-red-500 to-pink-600 flex items-center justify-center px-4"
+      >
+        <h1
+          class="text-white text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide"
+        >
+          ❤️ My Liked Products
+        </h1>
+      </section>
 
-  <div class="max-w-4xl mx-auto mt-10 p-4">
-    <h1 class="text-3xl font-bold mb-6 text-center">❤️ Liked Products</h1>
+    
+      <section
+        class="w-[90%] sm:w-[85%] mx-auto mt-10 sm:mt-14 mb-20 px-4 sm:px-0"
+      >
+        
+        <div id="emptyState" class="text-center py-20">
+          <i class="fa-regular fa-heart text-6xl text-gray-300 mb-4"></i>
+          <p class="text-gray-500 text-lg sm:text-xl">No liked products yet.</p>
+          <a href="/src/pages/shop.html">
+            <button
+              class="mt-6 px-6 py-2 sm:py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-lg font-semibold transition duration-300"
+            >
+              Start Shopping
+            </button>
+          </a>
+        </div>
 
-    <div id="likedContainer" class="flex flex-col gap-4"></div>
-  </div>
+        
+        <div
+          id="likedContainer"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8"
+        ></div>
+      </section>
+    </div>
 
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script type="module" src="./src/js/liked.js "></script>
-
-
-</body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./src/js/liked.js"></script>
+  </body>
 </html>

@@ -33,7 +33,7 @@ function renderCart() {
     itemDiv.className = 'flex items-center justify-between  p-4 rounded-xl shadow hover:shadow-lg transition';
 
     itemDiv.innerHTML = `
-  <a href="/src/pages/product-single-page.html?id=${item.id}" class="flex items-center gap-4">
+  <a href="./src/pages/product-single-page.html?id=${item.id}" class="flex items-center gap-4">
     <img src="${item.img}" class="w-24 h-24 object-cover rounded-lg"/>
     <div>
       <h3 class="font-semibold text-lg">${item.name}</h3>

@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Blog</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
 
-<body class="bg-gray-50">
-
-
-  <section class="w-full h-[260px] bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center">
-    <h1 class="text-white text-4xl font-bold tracking-wide"> Blog Posts</h1>
-  </section>
-
-
-  <section class="mt-14 mb-20">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-[85%] mx-auto gap-10" id="blogContainer"></div>
-  </section>
-
-  <script src="/src/js/blogData.js"></script>
-
-  <script>
-    const container = document.getElementById("blogContainer");
-
-    blogPosts.forEach(post => {
-      container.innerHTML += `
-        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+  <body class="bg-gray-50">
+    <div class="mx-auto max-w-[1400px]">
+    
+      <section
+        class="w-full h-[200px] sm:h-[260px] bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center px-4"
+      >
+        <h1
+          class="text-white text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide text-center"
+        >
+          Blog Posts
+        </h1>
+      </section>
 
     
-          <div class="w-full h-[190px] overflow-hidden rounded-t-2xl">
+      <section class="mt-10 sm:mt-14 mb-20 px-4 sm:px-0">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full sm:w-[90%] lg:w-[85%] mx-auto gap-6 sm:gap-8 lg:gap-10"
+          id="blogContainer"
+        ></div>
+      </section>
+    </div>
+
+    <script src="./src/js/blogData.js"></script>
+
+    <script>
+      const container = document.getElementById("blogContainer");
+
+      blogPosts.forEach((post) => {
+        container.innerHTML += `
+        <div class="bg-white rounded-lg sm:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+
+          <!-- Image Container -->
+          <div class="w-full h-[160px] sm:h-[190px] overflow-hidden rounded-t-lg sm:rounded-t-2xl">
             <img 
               src="${post.image}" 
-              class="w-full h-full object-cover hover:scale-110 transition duration-500"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500 cursor-pointer"
+              onclick="window.location.href='./src/pages/blog-single.html?id=${post.id}'"
+              alt="${post.title}"
             />
           </div>
 
-         
-          <div class="p-5">
-            <p class="text-pink-500 text-sm font-semibold">${post.category}</p>
+          <!-- Content -->
+          <div class="p-4 sm:p-5">
+            <p class="text-pink-500 text-xs sm:text-sm font-semibold uppercase tracking-wide">${post.category}</p>
 
             <h1 
-              class="font-semibold text-lg mt-1 cursor-pointer leading-tight hover:text-pink-500 transition"
-              onclick="window.location.href='/src/pages/blog-single.html?id=${post.id}'"
+              class="font-semibold text-base sm:text-lg mt-2 sm:mt-1 cursor-pointer leading-tight hover:text-pink-500 transition line-clamp-2"
+              onclick="window.location.href='./src/pages/blog-single.html?id=${post.id}'"
             >
               ${post.title}
             </h1>
 
-            <p class="text-gray-500 text-sm mt-2">
-              By ${post.author} • ${post.date}
+            <p class="text-gray-500 text-xs sm:text-sm mt-3 sm:mt-2">
+              By <span class="font-semibold text-gray-700">${post.author}</span> • ${post.date}
             </p>
           </div>
         </div>
       `;
-    });
-  </script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>

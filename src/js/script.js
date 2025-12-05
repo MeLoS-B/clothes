@@ -160,7 +160,7 @@ window.addToLiked = function(id, isNew = false) {
 
 
 window.viewProduct = function(id, isNew = false) {
-  window.location.href = `/src/pages/product-single-page.html?id=${id}&new=${isNew ? 1 : 0}`;
+  window.location.href = `./src/pages/product-single-page.html?id=${id}&new=${isNew ? 1 : 0}`;
 };
 
 
@@ -265,6 +265,20 @@ document.querySelectorAll('.category-item').forEach(item => {
     });
   });
 
+
+  const categoryMenu = document.getElementById("mobileCategoryMenu");
+  const overlay = document.getElementById("menuOverlay");
+  const openBtn = document.getElementById("mobileCategoriesBtn");
+
+  openBtn.addEventListener("click", () => {
+    categoryMenu.classList.remove("translate-x-[-100%]");
+    overlay.classList.remove("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    categoryMenu.classList.add("translate-x-[-100%]");
+    overlay.classList.add("hidden");
+  });
 
 renderProducts();
 renderNewProducts();

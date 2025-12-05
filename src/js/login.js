@@ -18,5 +18,5 @@ logInBtn.addEventListener("click", () => {
   localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
 
   // Redirect
-  window.location.href = "/index.html";
+  window.location.href = "./index.html";
 });
